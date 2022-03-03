@@ -1,0 +1,76 @@
+Sie sind Entwickler in einer Softwareschmiede für Echtzeitstrategiespiele. Im aktuellen Projekt entwickeln Sie einen Ausschnitt der
+Gesamtsoftware im Bereich des Back-Ends. Ihr Modul soll eine OOP-Struktur anderen Modulen anbieten welche folgende Anforderungen abdeckt:
+
+Jede Rasse im Gesamtspiel hat ihre spezifische Fahrzeug- und Flugeinheitentypen(Einheiten). Ihr Modul soll die Klassen für diese Einheiten bereit stellen
+mit ihren wichtigsten Eigenschaften und Fähigkeiten. 
+
+Zudemm soll Ihr Modul zentral für die Berechnung von Trefferpunkten und der Lebensdauer aller Einheiten eine Featureklasse anbieten.
+
+Sobald die maximale Anzahl der Trefferpunkte überschritten wurde, soll eine Einheit "zerstört" werden. Dazu hält jede Rasse jeweils
+ein Array mit allen aktuell im Spiel aktiven Einheiten.
+
+Es gibt die Rassen Protoss, Zerg und Terraner.   :-D
+
+
+Alle Rassen haben natürlich eine Bezeichnung und eine bestimmte Menge an Ressourcen. Ressourcen sind Gas und Mineralien.
+
+Jede Rasse hat ihre spezielle Flotte an Einheiten(Array). Alle Einheiten haben einen Schild(eine bestimmte Anzahl an "freien" Trefferpunkten) -
+solange das Schild > 0 ist, werden die Treffer nicht als volle Treffer gezählt, sondern lediglich vom Schild abgezogen. Erst wenn das Schild 0 
+Trefferpunkte hat, werden die Trefferpunkte von der Lebensenergie der Einheiten selbst abgezogen. Wenn die Einheit keine Lebensenergie mehr hat, gilt die
+Einheit als zerstört(der Slot im Array wird auf null gesetzt).
+
+
+Überblick über die Einheiten:
+
+
+Protoss:
+--------
+
+Corsair -> Schildpunkte: 20, Lebenspunkte: 150
+Carrier -> Schildpunkte: 250, Lebenspunkte: 1500
+Probe -> Schildpunkte: 5, Lebenspunkte: 50
+Scout -> Schildpunkte: 200, Lebenspunkte: 800
+Shuttle -> Schildpunkte: 60, Lebenspunkte: 400
+
+
+Zerg:
+--------
+
+Mutalisk -> Schildpunkte: 60, Lebenspunkte: 800
+Queen -> Schildpunkte: 250, Lebenspunkte: 1500
+Guardian -> Schildpunkte: 20, Lebenspunkte: 2000
+Lurker -> Schildpunkte: 200, Lebenspunkte: 500
+Overloard -> Schildpunkte: 60, Lebenspunkte: 400
+
+
+Terraner:
+--------
+
+Battlecruiser -> Schildpunkte: 600, Lebenspunkte: 2000
+Goliath -> Schildpunkte: 250, Lebenspunkte: 1200
+Valkyrie -> Schildpunkte: 40, Lebenspunkte: 800
+Tank -> Schildpunkte: 300, Lebenspunkte: 800
+Starcruiser -> Schildpunkte: 250, Lebenspunkte: 2000
+
+Alle Rassen haben unter anderem folgende Methoden:
+
++ addEinheit
++ deleteEinheitAt(index)
+
+Alle Einheiten haben unter anderem folgende Methoden:
+
++ hit(int points)  -> zieht dem Schild/der Einheit Punkte ab
++ loadShield(int points) -> lade das Schild auf(maximal bis anz Schildpunkte)
+
+
+
+Eine Methode in der Featureklasse UnitGC kümmert sich darum, ein ihr übergebenes Einheiten-Array(egal welcher Rasse) zu durchlaufen und
+alle Einheiten auf null zu setzen, welche durch Treffer keine Punkte mehr haben und somit zerstört wurden.
+
+Entwerfen Sie zunächst ein Klassendiagramm mit den Rassen und Einheiten, sowie der Featureklasse. Die Rassen und Einheiten haben NUR die hier beschriebenen Eigenschaften
+und Fähigkeiten/Methoden - um alle anderen Aspekte werden sich andere Entwickler Ihres Teams kümmern.
+
+Setzen Sie anschliessend das Modell in Javacode um.
+
+
+
